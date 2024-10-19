@@ -15,7 +15,6 @@ Secure voice/video communication using WebRTC. <br>
 Group chats, message threading, and message expiration. <br>
 Project Structure <br>
 graphql <br>
-Copy code <br>
 root/ <br>
 │
 ├── backend/
@@ -68,7 +67,7 @@ User login with OTP (/login)
 Message sending and receiving (/messages)
 Implement encryption logic in encryption.py (inside backend/middleware/):
 python
-Copy code
+example:
 from nacl.public import PrivateKey, Box
 def encrypt_message(sender_private_key, receiver_public_key, message):
     box = Box(sender_private_key, receiver_public_key)
@@ -91,7 +90,7 @@ React (for Web and Mobile):
 
 Create the login form in Login.tsx:
 typescript
-Copy code
+Example:
 const handleLogin = async () => {
     try {
         // Call Keycloak API for authentication
@@ -108,7 +107,7 @@ Electron (for Desktop):
 
 In electron/main.js, set up Electron to load your React application:
 javascript
-Copy code
+Example:
 const { app, BrowserWindow } = require('electron');
 const createWindow = () => {
     const win = new BrowserWindow({
@@ -145,7 +144,7 @@ Deployment
 Write a Dockerfile for the backend:
 
 Dockerfile
-Copy code
+Example:
 FROM python:3.9-slim
 WORKDIR /app
 COPY requirements.txt .
@@ -154,8 +153,7 @@ COPY . .
 CMD ["gunicorn", "--bind", "0.0.0.0:5000", "main:app"]
 docker-compose.yml (for both backend and frontend):
 
-yaml
-Copy code
+Example:
 version: '3'
 services:
   backend:
@@ -178,7 +176,7 @@ services:
 2. NGINX Configuration
 Set up SSL using OpenSSL and configure NGINX to reverse proxy to the backend:
 nginx
-Copy code
+Example:
 server {
     listen 80;
     server_name example.com;
@@ -202,30 +200,28 @@ Use Cypress to simulate user interaction with the application from start to fini
 Running the Application
 Clone the Repository:
 
-bash
-Copy code
+Example:
 git clone <repo-url>
 cd chatapp
 Install Backend Dependencies:
 
-bash
-Copy code
+Example:
 cd backend
 pip install -r requirements.txt
 Run Backend Server:
 
-bash
-Copy code
+Example:
 docker-compose up backend
 Run Frontend:
 
-bash
-Copy code
+Example:
 cd electron
 npm install
 npm start
 Run Entire App (Docker):
 
-bash
-Copy code
+Example:
 docker-compose up
+
+#Note: This repo is consist of complete chatting app including all the things which is required for MFA, E2E etc.
+**Thank You**
